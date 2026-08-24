@@ -272,3 +272,8 @@ Olimi Emmanuel Kasigazi
 https://github.com/olimiemma
 
 https://olimiemma.com/
+
+
+----
+
+This is an independent analytical project and is not affiliated with, sponsored by, or endorsed by The New York Times Company
