@@ -1,8 +1,10 @@
 # 25 Years of New York Times Headlines (2000–2025)
 
-An exploratory data-engineering and natural-language-processing project examining how New York Times headline metadata changed from 2000 through 2025.
+An exploratory data-engineering and natural-language-processing project examining how New York Times headline metadata changed from 2000 through 2025. 
 
-The analysis covers publishing volume, recurring vocabulary, era-defining terms, lexical sentiment, named entities, and an experimental semantic-search workflow. It analyzes article metadata—primarily publication dates, titles, short descriptions, and URLs—not subscriber, reader, advertising, or other user-level data.
+End-to-end NLP analysis of 2.2M New York Times headlines (2000–2025): coverage auditing and deduplication down to 2.07M analysable records, per-era TF-IDF fingerprinting across five historical eras, VADER sentiment with standard-error bands, spaCy named-entity extraction on a 400K stratified title sample, and a keyword-rate bump chart normalised per 10,000 articles. Extended with a fully local RAG chatbot: BGE-M3 embeddings, ChromaDB, and a quantized Gemma 3 GGUF, with no API keys and nothing leaving the machine.
+
+The analysis covers publishing volume, recurring vocabulary, era-defining terms, lexical sentiment, named entities, and an experimental semantic-search workflow. It analyzes article metadata—primarily publication dates, titles, short descriptions, and URLs—not subscriber, reader, advertising, or other user-level data. 
 
 > **Independent project:** This repository is not affiliated with, sponsored by, or endorsed by The New York Times Company. Findings are the author's interpretations of the available dataset and are not statements by The New York Times.
 
