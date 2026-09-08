@@ -1,0 +1,39 @@
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "@id": "https://github.com/olimiemma/NYT-analysis-2K-2K5#software",
+  "name": "New York Times Headline Analysis (2000–2025)",
+  "alternateName": "NYT-analysis-2K-2K5",
+  "description": "Independent Python data engineering and natural language processing case study of approximately 2.2 million New York Times article-metadata records. Includes data-quality auditing, TF-IDF, VADER lexical sentiment, sampled spaCy NER, and Matplotlib charts. The source CSV is not distributed and the optional RAG prototype has incomplete setup.",
+  "url": "https://github.com/olimiemma/NYT-analysis-2K-2K5",
+  "codeRepository": "https://github.com/olimiemma/NYT-analysis-2K-2K5",
+  "author": {
+    "@type": "Person",
+    "name": "OLIMI EMMANUEL KASIGAZI",
+    "givenName": "OLIMI EMMANUEL",
+    "familyName": "KASIGAZI",
+    "url": "https://olimiemma.com/",
+    "sameAs": ["https://github.com/olimiemma"]
+  },
+  "programmingLanguage": {"@type": "ComputerLanguage", "name": "Python"},
+  "runtimePlatform": ["Python", "Jupyter Notebook", "Google Colab"],
+  "inLanguage": "en",
+  "keywords": ["New York Times", "headline analysis", "natural language processing", "data engineering", "data quality", "TF-IDF", "VADER", "named entity recognition", "data visualization", "journalism"],
+  "isAccessibleForFree": true,
+  "conditionsOfAccess": "Publicly readable repository. No open-source license is granted. Source data and third-party materials have separate rights. This project is not affiliated with or endorsed by The New York Times Company.",
+  "usageInfo": "https://github.com/olimiemma/NYT-analysis-2K-2K5/blob/main/README.md#legal-rights-and-attribution",
+  "hasPart": [
+    {
+      "@type": "CreativeWork",
+      "name": "Data card",
+      "url": "https://github.com/olimiemma/NYT-analysis-2K-2K5/blob/main/docs/data-card.md",
+      "encodingFormat": "text/markdown"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Recorded analysis summary and provenance",
+      "url": "https://raw.githubusercontent.com/olimiemma/NYT-analysis-2K-2K5/main/metadata/analysis-summary.json",
+      "encodingFormat": "application/json"
+    }
+  ]
+}
