@@ -1,12 +1,29 @@
-# 25 Years of New York Times Headlines (2000–2025)
+# New York Times Headline Analysis (2000–2025): Python, NLP, and Data Quality
 
-An exploratory data-engineering and natural-language-processing project examining how New York Times headline metadata changed from 2000 through 2025. 
+An independent data engineering and natural language processing case study by **OLIMI EMMANUEL KASIGAZI**. The saved notebook loads **2,217,051 article-metadata records**, producing **2,071,261 records** after cleaning and boilerplate filtering. It uses Python, pandas, TF-IDF, VADER sentiment analysis, spaCy named-entity recognition, and Matplotlib to explore headline language and source coverage.
 
-End-to-end NLP analysis of 2.2M New York Times headlines (2000–2025): coverage auditing and deduplication down to 2.07M analysable records, per-era TF-IDF fingerprinting across five historical eras, VADER sentiment with standard-error bands, spaCy named-entity extraction on a 400K stratified title sample, and a keyword-rate bump chart normalised per 10,000 articles. Extended with a fully local RAG chatbot: BGE-M3 embeddings, ChromaDB, and a quantized Gemma 3 GGUF, with no API keys and nothing leaving the machine.
+The input fields are publication dates, titles, short descriptions, and article URLs. This is headline and content-metadata analysis, not subscriber behavior, reader engagement, advertising performance, or full-article analysis. The recorded date range is **January 1, 2000 through December 22, 2025**; the snapshot does not cover all of 2025.
 
-The analysis covers publishing volume, recurring vocabulary, era-defining terms, lexical sentiment, named entities, and an experimental semantic-search workflow. It analyzes article metadata—primarily publication dates, titles, short descriptions, and URLs—not subscriber, reader, advertising, or other user-level data. 
+An optional RAG prototype references BGE-M3, ChromaDB, and a Gemma GGUF model. Its saved setup uses Google Colab and Google Drive and has missing embedding prerequisites, so a complete offline run is not established by this repository.
 
 > **Independent project:** This repository is not affiliated with, sponsored by, or endorsed by The New York Times Company. Findings are the author's interpretations of the available dataset and are not statements by The New York Times.
+
+## Start here
+
+| Goal | Entry point |
+|---|---|
+| Inspect exact counts and notebook evidence | [Results and provenance](docs/results.md) |
+| Understand fields, methods, and run requirements | [Data card](docs/data-card.md) |
+| Retrieve counts as JSON | [Analysis summary](metadata/analysis-summary.json) |
+| Identify the software and author programmatically | [Software metadata](metadata/software.jsonld) |
+| Find a small index of useful files | [llms.txt](llms.txt) |
+| Cite the project | [CITATION.cff](CITATION.cff) |
+| Work on the repository with a coding agent | [AGENTS.md](AGENTS.md) |
+
+Published article:
+https://medium.com/@olimiemma/i-analyzed-2-2-0718f706c3bb
+
+The notebook and original article preserve an exploratory workflow. Use the data card and evidence-linked results for current interpretations, including corrections to input counts, sampling, and monthly-rate claims. `llms.txt` is an optional navigation aid, not a guarantee of indexing or AI citations.
 
 <p align="center">
   <img src="nyt_sentiment_trend_v2.png" alt="Average VADER sentiment of New York Times article titles by year from 2000 through 2025, with a standard-error band" width="100%">
@@ -16,12 +33,13 @@ The analysis covers publishing volume, recurring vocabulary, era-defining terms,
 
 | Item | Scope |
 |---|---:|
-| Time period | 2000–2025 |
-| Rows loaded from the source CSV | 2,216,466 |
+| Recorded date range after initial parsing | 2000-01-01 to 2025-12-22 |
+| Rows loaded from the source CSV | 2,217,051 |
+| Rows after date/title validity filtering | 2,216,466 |
 | Clean records after deduplication and outlier filtering | 2,184,483 |
 | Records after the additional boilerplate-title filter | 2,071,261 |
-| Named-entity sample | 400,000 titles, stratified by year |
-| Optional semantic-search sample | 50,000 articles |
+| Named-entity sample in saved output | 399,988 titles; 400,000 target, allocated proportionally by year |
+| Optional semantic-search sample | 50,000 target; no saved completed sample output |
 | Primary environment | Python / Jupyter / Google Colab |
 
 The source CSV is intentionally **not included** in this repository. Anyone reproducing the analysis must obtain article metadata through a source they are authorized to use and comply with all applicable terms.
@@ -56,7 +74,7 @@ The TF-IDF analysis treats each year as a document, aggregates those scores into
 
 ### Named entities
 
-spaCy named-entity recognition was run on a 400,000-title sample stratified by year. The result is useful for exploration but should not be treated as a definitive census: single-pass NER cannot reliably disambiguate every person, organization, or place.
+spaCy named-entity recognition processed 399,988 titles, with a 400,000-title target allocated proportionally by year. Integer rounding in each year's allocation explains the difference. The result is useful for exploration but should not be treated as a definitive census: single-pass NER cannot reliably disambiguate every person, organization, or place.
 
 <p align="center">
   <img src="nyt_ner_entities.png" alt="Bar charts of the most frequently extracted people, places, and organizations in a stratified sample of article titles" width="100%">
@@ -64,10 +82,10 @@ spaCy named-entity recognition was run on a 400,000-title sample stratified by y
 
 ### Publication coverage
 
-The source contains substantially more records in some years than others. The 2021–2022 decline—especially the 2022 low—is treated as a likely collection or API-coverage gap, not evidence that the newsroom published fewer stories.
+The source contains substantially more records in some years than others. A collection or API-coverage gap is a hypothesis for the 2021–2022 decline, especially the 2022 low; this repository has no acquisition logs that confirm its cause. The saved annual chart is calculated before URL deduplication and length filtering and is not an official newsroom publication ledger.
 
 <p align="center">
-  <img src="nyt_articles_per_year.png" alt="Bar chart of article records per year, showing a 2006 peak and a likely API gap around 2022" width="100%">
+  <img src="nyt_articles_per_year.png" alt="Collected article-metadata records by year before URL deduplication, showing a 2006 peak and lower observed counts around 2022; collection completeness is unverified" width="100%">
 </p>
 
 ## Repository contents
@@ -109,7 +127,7 @@ https://github.com/olimiemma/NYT-analysis-2K-2K5/blob/main/nyt-25-years-medium-a
 
 The workflow deliberately retains two corpus sizes:
 
-- **2,184,483 clean records** for coverage and raw-frequency analysis.
+- **2,184,483 clean records** for raw-frequency analysis. The earlier saved annual and monthly charts use the **2,216,466-row** intermediate corpus before URL deduplication and length filtering.
 - **2,071,261 filtered records** for analyses that would otherwise be dominated by recurring title templates.
 
 ## Expected data schema
@@ -140,7 +158,7 @@ cd NYT-analysis-2K-2K5
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
-python -m pip install pandas numpy matplotlib nltk scikit-learn spacy jupyter
+python -m pip install pandas numpy matplotlib nltk scikit-learn spacy jupyterlab
 python -m spacy download en_core_web_sm
 ```
 
@@ -166,11 +184,11 @@ Upload your authorized CSV to that location in Colab, or replace the hard-coded 
 jupyter lab
 ```
 
-Open `NYT_analysis_2K_2K5.ipynb` and run the cells from top to bottom. NLTK resources are downloaded by the notebook when needed.
+Open `NYT_analysis_2K_2K5.ipynb` and review the cells in order through the core analysis, stopping before the `RAG` section. The original notebook includes iterative analysis cells, Colab-specific paths, and unpinned dependencies; a fresh clean-kernel reproduction has not been verified. NLTK resources and the spaCy model may require network downloads. See the data card for specific prerequisites and known limitations.
 
 ### Optional semantic search / RAG
 
-The semantic-search section uses local embeddings, ChromaDB, `llama.cpp`, and a local Gemma-family GGUF model. It is an experimental extension, not part of the minimum reproducible analysis. The exported script assumes model files, GPU-specific installation choices, and embedding setup from the original runtime; update those paths and dependencies for your hardware before running it.
+The semantic-search section references BGE-M3 embeddings, ChromaDB, `llama.cpp`, and a Gemma-family GGUF model. It is an experimental extension. The committed sampling cell does not create `embeddings` or `embed_text`, which later cells require, and no completed RAG outputs are saved. Model paths, GPU installation commands, and the Drive mount also require adaptation. The exported `.py` file parses as Python but assumes the original runtime and unprovided files; it is not a packaged standalone command-line application.
 
 Do not use this dataset or the optional RAG workflow to train, fine-tune, or distribute a model unless your data rights expressly allow that use.
 
@@ -193,10 +211,10 @@ These results are descriptive and exploratory.
 - **The uncertainty band is limited.** The standard-error band describes uncertainty around the yearly sample mean; it does not capture model error, source-selection bias, temporal dependence, or headline-template effects.
 - **The TF-IDF heatmap is row-normalized.** A value of `1.00` marks a term's peak era, not a universal score comparable across all rows.
 - **NER is approximate.** “Clinton” may combine Bill and Hillary Clinton; “Trump” may refer to a person or brand; the small spaCy model does not perform full entity resolution or co-reference resolution.
-- **Monthly totals need day normalization.** `nyt_monthly_seasonality.png` shows raw totals, so February is mechanically disadvantaged. Per-day normalization is required before making claims about publishing cadence.
+- **Monthly totals need correct exposure denominators.** `nyt_monthly_seasonality.png` shows raw totals. A later cell divides totals pooled across years by one month's nominal length. Its roughly 6,000 values are not a valid daily publishing rate across the full period. A real rate needs total covered calendar days per month across the included years, accounting for leap years, partial years, and unresolved collection gaps.
 - **Counts and rates answer different questions.** The keyword trend uses mentions per 10,000 articles by year to reduce distortion from uneven yearly coverage.
 - **Era boundaries are analytical choices.** They are useful for comparison but are not objective divisions of history.
-- **2025 coverage depends on the source snapshot.** Verify completeness before presenting the final year as a full-year comparison.
+- **2025 is incomplete.** The saved initial date audit ends on December 22, 2025. The interval touches 26 calendar years, despite the original article's shorthand title, “25 Years.”
 
 ## Ethical use
 
@@ -231,7 +249,7 @@ The repository does not include an NYT API key, the raw CSV, full article text, 
 
 Unless a separate `LICENSE` file is added, no open-source license is granted for the original code, prose, or visualizations in this repository. Under the default copyright position, reuse beyond rights supplied by law requires permission from the copyright holder.
 
-Copyright © 2026 Olimi Emmanuel Kasigazi. All rights reserved for original project materials, excluding third-party content and software.
+Copyright © 2026 OLIMI EMMANUEL KASIGAZI. All rights reserved for original project materials, excluding third-party content and software.
 
 Any future code license should clearly apply only to original code and expressly exclude:
 
@@ -245,10 +263,10 @@ Third-party Python packages and models retain their own licenses and terms. Revi
 
 ### Citation
 
-When referencing this analysis, cite the repository and include the date you accessed it:
+When referencing this analysis, use `CITATION.cff`, cite the repository, and include the commit and date you accessed. Citation metadata identifies the original project; it grants no rights to the source data.
 
 ```text
-Kasigazi, Olimi Emmanuel. “25 Years of New York Times Headlines (2000–2025).”
+OLIMI EMMANUEL KASIGAZI. “New York Times Headline Analysis (2000–2025).”
 GitHub repository, 2026.
 https://github.com/olimiemma/NYT-analysis-2K-2K5
 ```
@@ -269,13 +287,23 @@ https://github.com/olimiemma/NYT-analysis-2K-2K5/issues
 
 ## Author
 
-Olimi Emmanuel Kasigazi
+OLIMI EMMANUEL KASIGAZI
 
 https://github.com/olimiemma
 
 https://olimiemma.com/
 
 
-----
+## Maintaining discovery information
 
-This is an independent analytical project and is not affiliated with, sponsored by, or endorsed by The New York Times Company
+Regenerate the compact results from saved notebook output without running the analysis:
+
+```bash
+python3 scripts/build_discovery.py
+python3 scripts/build_discovery.py --check
+```
+
+The check verifies count arithmetic, source hashes, generated-file freshness, metadata agreement, and local documentation links. It does not validate the underlying dataset or prove that a crawler indexed the repository.
+
+Research, hosting boundaries, suggested GitHub topics, and next steps:
+[Discovery strategy](docs/discovery.md)

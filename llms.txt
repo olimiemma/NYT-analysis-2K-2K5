@@ -1,0 +1,27 @@
+# New York Times Headline Analysis (2000–2025)
+
+> Independent Python and NLP case study by OLIMI EMMANUEL KASIGAZI, analyzing approximately 2.2 million article-metadata records. Includes data-quality auditing, TF-IDF, VADER lexical sentiment, sampled spaCy NER, and Matplotlib charts.
+
+The project analyzes dates, headlines, short descriptions, and URLs. It contains no subscriber or reader-behavior data. The source CSV is not distributed. The saved date audit ends on December 22, 2025. Results describe a source snapshot, not a complete archive or an official publication ledger. The optional RAG extension is incomplete in the saved notebook. No affiliation with or endorsement by The New York Times Company is claimed.
+
+This is an optional file index. It is not a crawler access policy, a reuse license, or a search-ranking signal. The raw file URLs below target the default branch; record a commit when citing a specific version.
+
+## Project and evidence
+
+- [Project overview](https://raw.githubusercontent.com/olimiemma/NYT-analysis-2K-2K5/main/README.md): Scope, setup, limitations, and rights notices.
+- [Results and provenance](https://raw.githubusercontent.com/olimiemma/NYT-analysis-2K-2K5/main/docs/results.md): Exact counts extracted from saved notebook output, with cell identifiers and source hash.
+- [Data card](https://raw.githubusercontent.com/olimiemma/NYT-analysis-2K-2K5/main/docs/data-card.md): Input schema, methods, denominator caveats, and reproducibility status.
+- [Analysis summary JSON](https://raw.githubusercontent.com/olimiemma/NYT-analysis-2K-2K5/main/metadata/analysis-summary.json): Structured corpus stages and annual source-coverage counts; not raw article data.
+
+## Identity and citation
+
+- [Citation](https://raw.githubusercontent.com/olimiemma/NYT-analysis-2K-2K5/main/CITATION.cff): Software citation metadata for the original independent project.
+- [Software metadata](https://raw.githubusercontent.com/olimiemma/NYT-analysis-2K-2K5/main/metadata/software.jsonld): Schema.org SoftwareSourceCode and author identity; no source-data license is asserted.
+
+## Optional
+
+- [Coding-agent guide](https://raw.githubusercontent.com/olimiemma/NYT-analysis-2K-2K5/main/AGENTS.md): File map, maintenance commands, and analysis constraints.
+- [Exported analysis source](https://raw.githubusercontent.com/olimiemma/NYT-analysis-2K-2K5/main/nyt_analysis_2k_2k5.py): Readable Python export with Colab-specific runtime assumptions and optional incomplete RAG code.
+- [Full notebook](https://github.com/olimiemma/NYT-analysis-2K-2K5/blob/main/NYT_analysis_2K_2K5.ipynb): Code, saved outputs, and figures; substantially larger than the summary.
+- [Discovery research](https://raw.githubusercontent.com/olimiemma/NYT-analysis-2K-2K5/main/docs/discovery.md): Sources, implementation decisions, and remaining owner-controlled settings.
+- [Published narrative](https://medium.com/@olimiemma/i-analyzed-2-2-0718f706c3bb): Companion article; read with the updated data card's interpretation limits.

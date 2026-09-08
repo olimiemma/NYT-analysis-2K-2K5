@@ -1,0 +1,201 @@
+{
+  "format_version": 1,
+  "project": "https://github.com/olimiemma/NYT-analysis-2K-2K5",
+  "author": "OLIMI EMMANUEL KASIGAZI",
+  "basis": "Extraction from archived notebook stream outputs and sampling code; no analysis rerun or source-data verification.",
+  "source": {
+    "path": "NYT_analysis_2K_2K5.ipynb",
+    "url": "https://github.com/olimiemma/NYT-analysis-2K-2K5/blob/main/NYT_analysis_2K_2K5.ipynb",
+    "sha256": "b9fc48bdfe6a65bb3d5b35c9b908782c43dad9a421d666651794ceaf552a115b",
+    "bytes": 1840513,
+    "cell_identifier_location": "cells[].metadata.id (Colab identifier)",
+    "citation_note": "Record the Git commit when citing; the URL follows main. The hash identifies the exact notebook bytes."
+  },
+  "date_coverage": {
+    "start": "2000-01-01",
+    "end": "2025-12-22",
+    "stage": "date_title_valid",
+    "cell_id": "YuaeYcYSpdRm",
+    "calendar_years_represented": 26,
+    "archive_completeness_verified": false
+  },
+  "corpus_stages": [
+    {
+      "id": "loaded",
+      "label": "CSV loaded",
+      "rows": 2217051,
+      "removed_since_previous": 0,
+      "cell_id": "A2pY5hFposUd",
+      "cell_index_zero_based": 1
+    },
+    {
+      "id": "date_title_valid",
+      "label": "Date/title validity filter",
+      "rows": 2216466,
+      "removed_since_previous": 585,
+      "cell_id": "YuaeYcYSpdRm",
+      "cell_index_zero_based": 2
+    },
+    {
+      "id": "url_deduplicated",
+      "label": "URL deduplication",
+      "rows": 2215053,
+      "removed_since_previous": 1413,
+      "cell_id": "Sam3L8QDrfAO",
+      "cell_index_zero_based": 11
+    },
+    {
+      "id": "title_length_filtered",
+      "label": "Title length cap",
+      "rows": 2215038,
+      "removed_since_previous": 15,
+      "cell_id": "Sam3L8QDrfAO",
+      "cell_index_zero_based": 11
+    },
+    {
+      "id": "description_length_filtered",
+      "label": "Description length cap",
+      "rows": 2184483,
+      "removed_since_previous": 30555,
+      "cell_id": "Sam3L8QDrfAO",
+      "cell_index_zero_based": 11
+    },
+    {
+      "id": "boilerplate_filtered",
+      "label": "Boilerplate-title filter",
+      "rows": 2071261,
+      "removed_since_previous": 113222,
+      "cell_id": "tqPmCZd2ugSa",
+      "cell_index_zero_based": 19
+    }
+  ],
+  "ner_sample": {
+    "target": 400000,
+    "recorded_processed": 399988,
+    "allocation": "proportional by year with per-year integer truncation",
+    "cell_id": "ljCAfxhjygsd"
+  },
+  "rag_sample": {
+    "target": 50000,
+    "recorded_sample": null,
+    "cell_id": "UX9oM76A13l0",
+    "note": "A sample target is not evidence of a completed retrieval/generation run."
+  },
+  "annual_coverage": {
+    "stage": "date_title_valid",
+    "cell_id": "YuaeYcYSpdRm",
+    "unit": "source records before URL deduplication and length filtering",
+    "counts": [
+      {
+        "year": 2000,
+        "rows": 102800
+      },
+      {
+        "year": 2001,
+        "rows": 102329
+      },
+      {
+        "year": 2002,
+        "rows": 110043
+      },
+      {
+        "year": 2003,
+        "rows": 108066
+      },
+      {
+        "year": 2004,
+        "rows": 107908
+      },
+      {
+        "year": 2005,
+        "rows": 121433
+      },
+      {
+        "year": 2006,
+        "rows": 163277
+      },
+      {
+        "year": 2007,
+        "rows": 100836
+      },
+      {
+        "year": 2008,
+        "rows": 118833
+      },
+      {
+        "year": 2009,
+        "rows": 146912
+      },
+      {
+        "year": 2010,
+        "rows": 112440
+      },
+      {
+        "year": 2011,
+        "rows": 102968
+      },
+      {
+        "year": 2012,
+        "rows": 101254
+      },
+      {
+        "year": 2013,
+        "rows": 88981
+      },
+      {
+        "year": 2014,
+        "rows": 85950
+      },
+      {
+        "year": 2015,
+        "rows": 80252
+      },
+      {
+        "year": 2016,
+        "rows": 69489
+      },
+      {
+        "year": 2017,
+        "rows": 60414
+      },
+      {
+        "year": 2018,
+        "rows": 58847
+      },
+      {
+        "year": 2019,
+        "rows": 53247
+      },
+      {
+        "year": 2020,
+        "rows": 45120
+      },
+      {
+        "year": 2021,
+        "rows": 29124
+      },
+      {
+        "year": 2022,
+        "rows": 19697
+      },
+      {
+        "year": 2023,
+        "rows": 38403
+      },
+      {
+        "year": 2024,
+        "rows": 40950
+      },
+      {
+        "year": 2025,
+        "rows": 46893
+      }
+    ]
+  },
+  "limitations": [
+    "Raw CSV and acquisition logs are not distributed.",
+    "Annual source counts do not measure verified newsroom production.",
+    "The final year is partial; acquisition coverage is unverified.",
+    "This summary does not grant data-reuse or training rights."
+  ]
+}

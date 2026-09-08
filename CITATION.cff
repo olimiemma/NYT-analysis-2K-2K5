@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you reference this project, cite the repository and record the commit and access date. Citation does not grant data reuse rights."
+type: software
+title: "New York Times Headline Analysis (2000–2025)"
+authors:
+  - family-names: "KASIGAZI"
+    given-names: "OLIMI EMMANUEL"
+    website: "https://olimiemma.com/"
+repository-code: "https://github.com/olimiemma/NYT-analysis-2K-2K5"
+url: "https://github.com/olimiemma/NYT-analysis-2K-2K5"
+abstract: >-
+  Independent Python data engineering and natural language processing case study
+  of New York Times article metadata from 2000 through 2025. Includes data quality
+  auditing, TF-IDF, VADER lexical sentiment, sampled spaCy named-entity recognition,
+  and visualizations. Raw data is not distributed. An optional RAG prototype has
+  incomplete setup. The project is not affiliated with The New York Times Company.
+keywords:
+  - natural language processing
+  - data engineering
+  - data quality
+  - headline analysis
+  - journalism
+  - Python
